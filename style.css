@@ -1,0 +1,311 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    justify-content: center;
+    background-color: white;
+  }
+  
+header{
+    height: 40px;/*高さ指定*/
+    width:90%;/*横幅指定*/
+    /*以下はレイアウトのためのCSS*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:#fff;
+    text-align: center;
+    padding: 20px;
+    
+  }
+  
+  /*JSを使いfixedクラスが付与された際の設定*/
+header.fixed{
+    position: fixed;/*fixedを設定して固定*/
+    z-index: 999;/*最前面へ*/
+    top:0;/*位置指定*/
+    left:0;/*位置指定*/
+  }
+
+  .logo img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 1vh;
+    left: 18px;
+  }
+
+  .header-title{
+    position: absolute;
+    font-weight: bold;
+    text-decoration: none;
+    color: #00708E;
+    padding:10px; 
+    left: 70px;
+  }
+  
+main{
+    margin-top: 10px;
+    margin-bottom: 70px;
+  }
+
+  div {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100lvh;
+  }
+.wrapper{
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 100px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    color: #0172C1;
+    background-color: #fff;
+    padding-bottom: 50px;
+  }
+
+  section{
+  padding:30px 0;
+  }
+
+#loading {
+    transition: all 2.5s; /*ローディングにかかる時間*/
+    background-color: white;
+    z-index: 999;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+.loading-text {
+    font-weight: bold;
+    text-align: center;
+    font-family: "Comic Sans MS";
+  }
+  
+ .spin {
+    width: 20%;
+    height: auto;
+  }
+  
+.loaded {
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+  }
+
+
+/*========= ナビゲーションのためのCSS ===============*/
+
+#g-nav{
+  /*position:fixed;にし、z-indexの数値を大きくして前面へ*/
+  position:fixed;
+  z-index: 999;
+  /*ナビのスタート位置と形状*/
+top:-120%;
+  left:0;
+width:100%;
+  height: 100vh;/*ナビの高さ*/
+background: #4ED4FF;
+  /*動き*/
+transition: all 0.6s;
+}
+
+/*アクティブクラスがついたら位置を0に*/
+#g-nav.panelactive{
+  top: 0;
+}
+
+/*ナビゲーションの縦スクロール*/
+#g-nav.panelactive #g-nav-list{
+  /*ナビの数が増えた場合縦スクロール*/
+  position: fixed;
+  z-index: 999; 
+  width: 100%;
+  height: 100vh;/*表示する高さ*/
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*ナビゲーション*/
+#g-nav ul {
+  /*ナビゲーション天地中央揃え*/
+  position: absolute;
+  z-index: 999;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav li{
+list-style: none;
+  text-align: center; 
+}
+
+#g-nav li a{
+color: #333;
+text-decoration: none;
+padding:10px;
+display: block;
+text-transform: uppercase;
+letter-spacing: 0.1em;
+font-weight: bold;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn{
+position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+top:10px;
+right: 10px;
+cursor: pointer;
+  width: 50px;
+  height:50px;
+}
+
+/*×に変化*/	
+.openbtn span{
+  display: inline-block;
+  transition: all .4s;
+  position: absolute;
+  left: 14px;
+  height: 3px;
+  border-radius: 2px;
+background-color: #666;
+  width: 45%;
+}
+
+.openbtn span:nth-of-type(1) {
+top:15px;	
+}
+
+.openbtn span:nth-of-type(2) {
+top:23px;
+}
+
+.openbtn span:nth-of-type(3) {
+top:31px;
+}
+
+.openbtn.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn.active span:nth-of-type(2) {
+opacity: 0;
+}
+
+.openbtn.active span:nth-of-type(3){
+  top: 30px;
+  left: 18px;
+  transform: translateY(-6px) rotate(45deg);
+  width: 30%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+
+h1 {
+  text-align: center;
+  padding: 10px 0;
+}
+
+h2{
+  margin-top: 40px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";;
+  color: black;
+  padding:10px;  
+}
+
+.slider{
+  display: flex;
+}
+.slider img{
+  position: absolute;
+  padding: 0;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation : slideshow1 5s linear infinite;
+}
+@keyframes slideshow1 {
+  0%   { opacity: 0; }
+  28%  { opacity: 1; }
+  50%  { opacity: 1; }
+  75%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.gallery {
+  max-width: 800px;
+  padding: 10px;
+}
+
+.gallery img{
+  position: center;
+  display: flex;
+}
+
+
+ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 10px;
+  gap: 10px;
+}
+
+ul li img {
+  transition: opacity .5s;
+}
+
+ul li img:hover {
+  cursor: pointer;
+  opacity: .7;
+}
+
+
+#caption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, .5);
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #FFF;
+}
+
+@media screen and (max-width: 640px) {
+  ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
